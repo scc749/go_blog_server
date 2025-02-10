@@ -1,0 +1,92 @@
+captcha:
+    height: 80
+    width: 240
+    length: 6
+    max_skew: 0.7
+    dot_count: 80
+email:
+    host: smtp.qq.com
+    port: 465
+    from: xxx@qq.com
+    nickname: 发件人昵称
+    secret: xxxxxxxxxxxxxxxx
+    is_ssl: true
+es:
+    url: http://127.0.0.1:9200
+    username: ""
+    password: ""
+    is_console_print: true
+gaode:
+    enable: false
+    key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+jwt:
+    access_token_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    refresh_token_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    access_token_expiry_time: 2h
+    refresh_token_expiry_time: 7d
+    issuer: go_blog
+mysql:
+    host: 127.0.0.1
+    port: 3306
+    config: charset=utf8mb4&parseTime=True&loc=Local
+    db_name: blog_db
+    username: root
+    password: root
+    max_idle_conns: 10
+    max_open_conns: 100
+    log_mode: info
+qiniu:
+    zone: z0
+    bucket: xxx
+    img_path: https://xxx.xxx/
+    access_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    secret_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    use_https: true
+    use_cdn_domains: true
+qq:
+    enable: false
+    app_id: "000000000"
+    app_key: xxxxxxxxxxxxxxxx
+    redirect_uri: http://xxx.xxx/xxx
+redis:
+    address: 127.0.0.1:6379
+    password: ""
+    db: 0
+system:
+    host: 0.0.0.0
+    port: 8080
+    env: release
+    router_prefix: api
+    use_multipoint: true
+    sessions_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    oss_type: local
+upload:
+    size: 20
+    path: uploads
+website:
+    logo: ""
+    full_logo: ""
+    title: 博客标题-xxx的个人博客
+    slogan: 博客标题
+    slogan_en: Blog Title
+    description: 博客描述
+    version: 1.0.0
+    created_at: "2025-1-15"
+    icp_filing: icp备案号
+    public_security_filing: 公安备案号
+    bilibili_url: https://space.bilibili.com/xxx
+    gitee_url: https://gitee.com/xxx
+    github_url: https://github.com/xxx/
+    name: 昵称
+    job: 工作
+    address: 地址
+    email: xxx@qq.com
+    qq_image: ""
+    wechat_image: ""
+zap:
+    level: info
+    filename: log/go_blog.log
+    max_size: 200
+    max_backups: 30
+    max_age: 5
+    is_console_print: true

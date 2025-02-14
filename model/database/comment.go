@@ -31,13 +31,14 @@ func (c *Comment) AfterCreate(_ *gorm.DB) error {
 	return err
 }
 
-// BeforeDelete 钩子，删除前调用
-func (c *Comment) BeforeDelete(tx *gorm.DB) (err error) {
-	if err := tx.Model(&c).Take(&c).Error; err != nil {
+// AfterDelete 钩子，删除后调用
+func (c *Comment) BeforeDelete(_ *gorm.DB) error {
+	var articleID string
+	if err := global.DB.Model(&c).Pluck("article_id", &articleID).Error; err != nil {
 		return err
 	}
 	source := "ctx._source.comments -= 1"
 	script := types.Script{Source: &source, Lang: &scriptlanguage.Painless}
-	_, err = global.ESClient.Update(elasticsearch.ArticleIndex(), c.ArticleID).Script(&script).Do(context.TODO())
+	_, err := global.ESClient.Update(elasticsearch.ArticleIndex(), articleID).Script(&script).Do(context.TODO())
 	return err
 }

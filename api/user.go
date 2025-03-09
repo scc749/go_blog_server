@@ -110,9 +110,9 @@ func (userApi *UserApi) QQLogin(c *gin.Context) {
 
 	// 获取访问令牌
 	accessTokenResponse, err := qqService.GetAccessTokenByCode(code)
-	if err != nil {
-		global.Log.Error(err.Error(), zap.Error(err))
-		response.FailWithMessage(err.Error(), c)
+	if err != nil || accessTokenResponse.Openid == "" {
+		global.Log.Error("Invalid code", zap.Error(err))
+		response.FailWithMessage("Invalid code", c)
 	}
 
 	// 根据访问令牌进行QQ登录

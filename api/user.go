@@ -113,6 +113,7 @@ func (userApi *UserApi) QQLogin(c *gin.Context) {
 	if err != nil || accessTokenResponse.Openid == "" {
 		global.Log.Error("Invalid code", zap.Error(err))
 		response.FailWithMessage("Invalid code", c)
+		return
 	}
 
 	// 根据访问令牌进行QQ登录

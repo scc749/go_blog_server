@@ -51,16 +51,16 @@ func (articleService *ArticleService) ArticleSearch(info request.ArticleSearch) 
 
 	// 根据标签筛选
 	if info.Tag != "" {
-		boolQuery.Must = []types.Query{
-			{Match: map[string]types.MatchQuery{"tags": {Query: info.Tag}}},
-		}
+		boolQuery.Filter = append(boolQuery.Filter, types.Query{
+			Term: map[string]types.TermQuery{"tags": {Value: info.Tag}},
+		})
 	}
 
 	// 根据类别筛选
 	if info.Category != "" {
-		boolQuery.Filter = []types.Query{
-			{Term: map[string]types.TermQuery{"category": {Value: info.Category}}},
-		}
+		boolQuery.Filter = append(boolQuery.Filter, types.Query{
+			Term: map[string]types.TermQuery{"category": {Value: info.Category}},
+		})
 	}
 
 	// 如果有查询条件，则使用 Bool 查询，否则使用 MatchAll 查询

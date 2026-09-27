@@ -37,7 +37,7 @@ func ArticleMapping() *types.TypeMapping {
 			"title":      types.TextProperty{},
 			"keyword":    types.KeywordProperty{},
 			"category":   types.KeywordProperty{},
-			"tags":       []types.KeywordProperty{},
+			"tags":       types.KeywordProperty{},
 			"abstract":   types.TextProperty{},
 			"content":    types.TextProperty{},
 			"views":      types.IntegerNumberProperty{},
